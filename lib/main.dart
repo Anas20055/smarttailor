@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_tailor/core/routes/routes.dart';
+import 'package:smart_tailor/core/constants/app_colors.dart';
 part "core/theme/theme.dart";
 
 void main() {
@@ -33,7 +34,9 @@ Widget _buildRunnableApp({
   if (!isWeb) {
     return app;
   }
-
+  if (webAppWidth < 400) {
+    return app;
+  }
   return Center(
     child: ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(40)),

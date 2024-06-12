@@ -7,7 +7,16 @@ ThemeData _theme() {
     textButtonTheme: _textButton(),
     appBarTheme: _appBarThem(),
     colorScheme: const ColorScheme.light(),
-    textTheme: const TextTheme(),
+    textTheme: const TextTheme(
+      headlineLarge: TextStyle(
+        fontSize: 40,
+        fontWeight: FontWeight.w700,
+      ),
+      headlineMedium: TextStyle(
+        fontSize: 24, fontWeight: FontWeight.w300,
+        // fontWeight: FontWeight.w600,
+      ),
+    ),
     tabBarTheme: const TabBarTheme(
       tabAlignment: TabAlignment.start,
       labelPadding: EdgeInsets.only(right: 50),
@@ -63,7 +72,7 @@ ElevatedButtonThemeData _elevatedButton() {
       shape: const MaterialStatePropertyAll(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(41),
+            Radius.circular(14),
           ),
         ),
       ),
@@ -72,7 +81,7 @@ ElevatedButtonThemeData _elevatedButton() {
           if (states.contains(MaterialState.disabled)) {
             return const Color.fromRGBO(215, 215, 215, 1);
           }
-          return Colors.black;
+          return AppColors.darkBlue;
         },
       ),
       foregroundColor: MaterialStateProperty.resolveWith<Color>(
@@ -86,15 +95,14 @@ ElevatedButtonThemeData _elevatedButton() {
       overlayColor: MaterialStatePropertyAll(Colors.grey.withOpacity(0.1)),
       textStyle: const MaterialStatePropertyAll(
         TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 14,
+          fontSize: 20,
         ),
       ),
       minimumSize: const MaterialStatePropertyAll(
         Size(double.maxFinite, 0),
       ),
       padding: const MaterialStatePropertyAll(
-        EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       ),
     ),
   );
