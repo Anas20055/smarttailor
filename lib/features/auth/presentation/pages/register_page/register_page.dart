@@ -132,6 +132,7 @@ class _RegisterPageState extends State<RegisterPage> {
           valueListenable: _isButtonEnabled,
           builder: (context, isEnabled, child) {
             return CustomButton(
+              borderColor: AppColors.grey,
               onPressed: isEnabled ? _submit : null,
               child: const Text('Зарегистрироваться'),
             );

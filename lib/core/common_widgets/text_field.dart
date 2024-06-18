@@ -19,7 +19,7 @@ class MyTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final int? maxLength;
   final TextAlign? textAlign;
-
+  final Color? borderColor;
   const MyTextField({
     super.key,
     this.validator,
@@ -36,6 +36,7 @@ class MyTextField extends StatelessWidget {
     this.inputFormatters,
     this.maxLength,
     this.textAlign,
+    this.borderColor,
   });
   @override
   Widget build(BuildContext context) {
@@ -52,8 +53,8 @@ class MyTextField extends StatelessWidget {
         enabled: true,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius ?? 6),
-          borderSide: const BorderSide(
-            color: AppColors.grey,
+          borderSide: BorderSide(
+            color: borderColor ?? AppColors.grey,
             width: 1,
           ),
         ),
@@ -87,8 +88,12 @@ class MyTextField extends StatelessWidget {
               color: Colors.red,
             ),
         isDense: true,
-        contentPadding:
-            padding ?? const EdgeInsets.only(top: 13, left: 12, bottom: 10),
+        contentPadding: padding ??
+            const EdgeInsets.only(
+              top: 13,
+              left: 12,
+              bottom: 10,
+            ),
         hintText: hintText,
         hintStyle: null,
         suffixIcon: suffixIcon,

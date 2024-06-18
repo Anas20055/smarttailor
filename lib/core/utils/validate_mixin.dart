@@ -1,19 +1,5 @@
 mixin FieldValidation {
-  String? validateUsername(String? value) {
-    if (value?.isEmpty == true) {
-      return '';
-    }
-    return null;
-  }
-
-  String? validateName(String? value) {
-    if (value?.isEmpty == true) {
-      return '';
-    }
-    return null;
-  }
-
-  String? validateMidname(String? value) {
+  String? validateIsEmpty(String? value) {
     if (value?.isEmpty == true) {
       return '';
     }

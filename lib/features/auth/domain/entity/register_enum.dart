@@ -13,9 +13,9 @@ enum FieldType with FieldValidation {
 
   String? validate(String? value) {
     return switch (this) {
-      FieldType.username => validateUsername(value),
-      FieldType.name => validateName(value),
-      FieldType.midname => validateMidname(value),
+      FieldType.username => validateIsEmpty(value),
+      FieldType.name => validateIsEmpty(value),
+      FieldType.midname => validateIsEmpty(value),
       FieldType.email => validateEmail(value),
       FieldType.phone => validatePhone(value)
     };
