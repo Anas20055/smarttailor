@@ -48,6 +48,7 @@ dependencies:
   cached_network_image: ^3.3.1
   shared_preferences: ^2.2.3
   image_picker: ^1.1.1
+  mask_text_input_formatter: ^2.9.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -89,3 +90,5 @@ flutter:
         - asset: assets/fonts/SF-Pro-Text-Regular.otf
         - asset: assets/fonts/SF-Pro-Text-Bold.otf
           weight: 700
+        - asset: assets/fonts/SF-Pro-Text-Semibold.otf
+          weight: 600

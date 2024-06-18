@@ -12,7 +12,7 @@ class WelcomTitle extends StatelessWidget {
     return Positioned(
       top: 224,
       child: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
+        width: 393,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 33),
           child: Column(

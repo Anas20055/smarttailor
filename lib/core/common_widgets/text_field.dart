@@ -1,8 +1,12 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:smart_tailor/core/constants/app_colors.dart';
 
 class MyTextField extends StatelessWidget {
   final String? Function(String?)? validator;
-  final String hintText;
+  final String? hintText;
   final TextEditingController controller;
   final VoidCallback? onPressed;
   final void Function(String)? onChanged;
@@ -10,11 +14,16 @@ class MyTextField extends StatelessWidget {
   final EdgeInsets? padding;
   final double? radius;
   final TextStyle? style;
+  final TextStyle? errorStyle;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
+  final int? maxLength;
+  final TextAlign? textAlign;
 
   const MyTextField({
     super.key,
     this.validator,
-    required this.hintText,
+    this.hintText,
     required this.controller,
     this.onPressed,
     this.onChanged,
@@ -22,53 +31,68 @@ class MyTextField extends StatelessWidget {
     this.padding,
     this.radius,
     this.style,
+    this.errorStyle,
+    this.keyboardType,
+    this.inputFormatters,
+    this.maxLength,
+    this.textAlign,
   });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorErrorColor: Colors.black,
+      textAlign: textAlign ?? TextAlign.start,
+      maxLength: maxLength,
+      inputFormatters: inputFormatters,
+      keyboardType: keyboardType,
+      cursorErrorColor: Colors.red,
       cursorColor: Colors.black,
-      style: style ?? Theme.of(context).textTheme.labelSmall,
+      style: style ?? Theme.of(context).textTheme.labelLarge,
       onChanged: onChanged,
       decoration: InputDecoration(
         enabled: true,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 42),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(radius ?? 6),
+          borderSide: const BorderSide(
+            color: AppColors.grey,
+            width: 1,
+          ),
         ),
-        fillColor: Colors.grey,
+        fillColor: Colors.white,
         filled: true,
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 42),
+          borderRadius: BorderRadius.circular(radius ?? 6),
           borderSide: const BorderSide(
-            color: Colors.orange,
-            width: 1.1,
+            color: AppColors.grey,
+            width: 1,
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 42),
-          borderSide: BorderSide.none,
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius ?? 42),
+          borderRadius: BorderRadius.circular(radius ?? 6),
           borderSide: const BorderSide(
-            color: Colors.orange,
-            width: 1.1,
+            color: Colors.red,
+            width: 1,
           ),
         ),
-        errorStyle: const TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 12,
-          color: Colors.red,
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(radius ?? 6),
+          borderSide: const BorderSide(
+            color: AppColors.grey,
+            width: 1,
+          ),
         ),
-        contentPadding: padding ??
-            const EdgeInsets.symmetric(
-              horizontal: 19,
-              vertical: 9,
+        errorStyle: errorStyle ??
+            const TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 12,
+              color: Colors.red,
             ),
+        isDense: true,
+        contentPadding:
+            padding ?? const EdgeInsets.only(top: 13, left: 12, bottom: 10),
         hintText: hintText,
         hintStyle: null,
         suffixIcon: suffixIcon,
+        counterText: '',
       ),
       validator: validator,
       controller: controller,

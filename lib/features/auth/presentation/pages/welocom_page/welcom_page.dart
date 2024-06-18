@@ -22,6 +22,9 @@ class _WelcomePageState extends State<WelcomePage> {
         children: [
           Image.asset(
             AppImages.backImage,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            fit: BoxFit.fill,
           ),
           const WelcomTitle(),
           WelcomeButtons(

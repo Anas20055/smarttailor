@@ -34,9 +34,6 @@ Widget _buildRunnableApp({
   if (!isWeb) {
     return app;
   }
-  if (webAppWidth < 400) {
-    return app;
-  }
   return Center(
     child: ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(40)),

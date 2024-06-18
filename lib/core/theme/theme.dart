@@ -13,8 +13,15 @@ ThemeData _theme() {
         fontWeight: FontWeight.w700,
       ),
       headlineMedium: TextStyle(
-        fontSize: 24, fontWeight: FontWeight.w300,
-        // fontWeight: FontWeight.w600,
+        fontSize: 24,
+        fontWeight: FontWeight.w300,
+      ),
+      headlineSmall: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+      ),
+      labelLarge: TextStyle(
+        fontSize: 16,
       ),
     ),
     tabBarTheme: const TabBarTheme(
@@ -92,6 +99,7 @@ ElevatedButtonThemeData _elevatedButton() {
           return Colors.white;
         },
       ),
+      surfaceTintColor: const MaterialStatePropertyAll(Colors.white),
       overlayColor: MaterialStatePropertyAll(Colors.grey.withOpacity(0.1)),
       textStyle: const MaterialStatePropertyAll(
         TextStyle(
@@ -112,10 +120,10 @@ AppBarTheme _appBarThem() {
   return const AppBarTheme(
     scrolledUnderElevation: 0,
     titleTextStyle: TextStyle(
-      fontSize: 22,
-      fontFamily: 'Poppins',
+      fontSize: 20,
+      fontFamily: 'SF Pro Text',
       color: Colors.black,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
     ),
     elevation: 0,
   );
