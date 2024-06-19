@@ -2,12 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_tailor/core/constants/app_colors.dart';
 import 'package:smart_tailor/core/utils/validate_mixin.dart';
 import 'package:smart_tailor/features/auth/presentation/pages/confirm_page/widgets/confirm_buttons.dart';
 import 'package:smart_tailor/features/auth/presentation/pages/confirm_page/widgets/otp_form.dart';
 
 class ConfirmPage extends StatefulWidget {
-  const ConfirmPage({super.key});
+  final String? title;
+  const ConfirmPage({super.key, this.title});
 
   @override
   State<ConfirmPage> createState() => _ConfirmPageState();
@@ -96,53 +98,57 @@ class _ConfirmPageState extends State<ConfirmPage> with FieldValidation {
     final theme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.backColor,
         centerTitle: true,
-        title: const Text('Регистрация'),
+        title: Text(widget.title ?? 'Регистрация'),
       ),
-      body: SingleChildScrollView(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            SizedBox(
-              height: MediaQuery.sizeOf(context).height - 115,
-              child: Column(
-                children: [
-                  const SizedBox(height: 72),
-                  SizedBox(
-                    width: 225,
-                    child: Text(
-                      _infoMessage,
+      body: ColoredBox(
+        color: AppColors.backColor,
+        child: SingleChildScrollView(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height - 115,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 72),
+                    SizedBox(
+                      width: 225,
+                      child: Text(
+                        _infoMessage,
+                        style: theme.labelLarge,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(height: 28),
+                    OtpForm(
+                      formKey: _formKey,
+                      controllers: _controllers,
+                      otpError: _otpError,
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Отправить код повторно через',
                       style: theme.labelLarge,
-                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  const SizedBox(height: 28),
-                  OtpForm(
-                    formKey: _formKey,
-                    controllers: _controllers,
-                    otpError: _otpError,
-                  ),
-                  const SizedBox(height: 24),
-                  Text(
-                    'Отправить код повторно через',
-                    style: theme.labelLarge,
-                  ),
-                  const SizedBox(height: 14),
-                  Text(
-                    '00:${_start < 10 ? "0" : ""}$_start',
-                    style: theme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w400,
+                    const SizedBox(height: 14),
+                    Text(
+                      '00:${_start < 10 ? "0" : ""}$_start',
+                      style: theme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 200),
-                ],
+                    const SizedBox(height: 200),
+                  ],
+                ),
               ),
-            ),
-            ConfirmButtons(
-              onPressed1: _verifyOTP,
-              onPressed2: _start == 0 ? _resendCode : null,
-            ),
-          ],
+              ConfirmButtons(
+                onPressed1: _verifyOTP,
+                onPressed2: _start == 0 ? _resendCode : null,
+              ),
+            ],
+          ),
         ),
       ),
     );

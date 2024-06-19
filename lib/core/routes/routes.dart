@@ -6,17 +6,20 @@ import 'package:smart_tailor/features/auth/presentation/pages/register_page/regi
 import 'package:smart_tailor/features/auth/presentation/pages/welocom_page/welcom_page.dart';
 
 abstract class AppRoutes {
-  static String? initialRoute() => AppRouteNames.confirm;
+  static String? initialRoute() => AppRouteNames.welcome;
   static Route onGenerateRoutes(RouteSettings settings) {
     return switch (settings.name) {
-      AppRouteNames.confirm => _materialRoute(const ConfirmPage()),
       AppRouteNames.welcome => _materialRoute(const WelcomePage()),
+      AppRouteNames.confirm => _materialRoute(ConfirmPage(
+          title: settings.arguments as String?,
+        )),
+      AppRouteNames.homePage => _materialRoute(const RegisterPage()),
       AppRouteNames.register => _materialRoute(const RegisterPage()),
       AppRouteNames.login => _materialRoute(const LoginPage()),
       // AppRouteNames.detailScreen =>
       //   _materialRoute(ReciepDetailScreen(id: settings.arguments as int)),
 
-      _ => _materialRoute(const RegisterPage()),
+      _ => _materialRoute(const WelcomePage()),
     };
   }
 

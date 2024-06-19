@@ -16,22 +16,25 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          Image.asset(
-            AppImages.backImage,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            fit: BoxFit.fill,
-          ),
-          const WelcomTitle(),
-          WelcomeButtons(
-            onSingIn: onSingIn,
-            onSingUp: onSingUp,
-          ),
-        ],
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        body: Stack(
+          alignment: Alignment.center,
+          children: [
+            Image.asset(
+              AppImages.backImage,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              fit: BoxFit.fill,
+            ),
+            const WelcomTitle(),
+            WelcomeButtons(
+              onSingIn: onSingIn,
+              onSingUp: onSingUp,
+            ),
+          ],
+        ),
       ),
     );
   }
