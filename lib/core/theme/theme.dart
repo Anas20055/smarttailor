@@ -2,6 +2,7 @@ part of '../../main.dart';
 
 ThemeData _theme() {
   return ThemeData(
+    scaffoldBackgroundColor: AppColors.backColor,
     fontFamily: 'SF Pro Text',
     elevatedButtonTheme: _elevatedButton(),
     textButtonTheme: _textButton(),
@@ -118,6 +119,7 @@ ElevatedButtonThemeData _elevatedButton() {
 
 AppBarTheme _appBarThem() {
   return const AppBarTheme(
+    backgroundColor: AppColors.backColor,
     scrolledUnderElevation: 0,
     titleTextStyle: TextStyle(
       fontSize: 20,

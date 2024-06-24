@@ -68,77 +68,56 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
+      appBar: AppBar(
+        title: const Text(''),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: MediaQuery.sizeOf(context).width,
-              height: MediaQuery.sizeOf(context).height,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              color: AppColors.backColor,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 111),
-                  Text(
-                    'Регистрация',
-                    style: theme.headlineSmall,
-                  ),
-                  const SizedBox(height: 32),
-                  RegisterFormFields(
-                    formKey: _formKey,
-                    isFieldEmpty: _isFieldEmpty,
-                    controllers: _controllers,
-                  ),
-                  CheckBoxWidget(
-                    value: _isChecked,
-                    onChanged: _updateCheckbox,
-                  ),
-                ],
+            Text(
+              'Регистрация',
+              style: theme.headlineSmall,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 32),
+                    RegisterFormFields(
+                      formKey: _formKey,
+                      isFieldEmpty: _isFieldEmpty,
+                      controllers: _controllers,
+                    ),
+                    CheckBoxWidget(
+                      value: _isChecked,
+                      onChanged: _updateCheckbox,
+                    ),
+                    const SizedBox(height: 68),
+                    registerButton(context),
+                    const SizedBox(height: 40),
+                  ],
+                ),
               ),
             ),
-            registerButton(context),
-            backButton(context),
           ],
         ),
       ),
     );
   }
 
-  Positioned backButton(BuildContext context) {
-    return Positioned(
-      top: 59,
-      left: 8,
-      child: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: const Icon(
-          Icons.arrow_back_ios_rounded,
-          size: 22,
-        ),
-      ),
-    );
-  }
-
   Widget registerButton(BuildContext context) {
-    return Positioned(
-      left: 16,
-      right: 16,
-      bottom: 50,
-      child: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
-        child: ValueListenableBuilder<bool>(
-          valueListenable: _isButtonEnabled,
-          builder: (context, isEnabled, child) {
-            return CustomButton(
-              borderColor: AppColors.grey,
-              onPressed: isEnabled ? _submit : null,
-              child: const Text('Зарегистрироваться'),
-            );
-          },
-        ),
-      ),
+    return ValueListenableBuilder<bool>(
+      valueListenable: _isButtonEnabled,
+      builder: (context, isEnabled, child) {
+        return CustomButton(
+          borderColor: AppColors.grey,
+          onPressed: isEnabled ? _submit : null,
+          child: const Text('Зарегистрироваться'),
+        );
+      },
     );
   }
 }

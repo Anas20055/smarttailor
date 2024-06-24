@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_tailor/core/constants/app_colors.dart';
+import 'package:smart_tailor/core/constants/app_images.dart';
 
 class WelcomTitle extends StatelessWidget {
   const WelcomTitle({
@@ -17,21 +17,7 @@ class WelcomTitle extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 33),
           child: Column(
             children: [
-              Container(
-                alignment: Alignment.center,
-                width: 110,
-                height: 110,
-                decoration: const BoxDecoration(
-                  color: AppColors.yellow,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(16.57),
-                  ),
-                ),
-                child: Text(
-                  'ST',
-                  style: theme.headlineLarge,
-                ),
-              ),
+              Image.asset(AppImages.imageTitle),
               const SizedBox(height: 36),
               Text(
                 'SmartTailor',

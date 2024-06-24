@@ -39,11 +39,7 @@ class _WelcomePageState extends State<WelcomePage> {
     );
   }
 
-  void onSingIn() {
-    Navigator.pushNamed(context, AppRouteNames.login);
-  }
+  void onSingIn() => Navigator.pushNamed(context, AppRouteNames.login);
 
-  void onSingUp() {
-    Navigator.pushNamed(context, AppRouteNames.register);
-  }
+  void onSingUp() => Navigator.pushNamed(context, AppRouteNames.register);
 }

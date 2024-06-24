@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:smart_tailor/core/common_widgets/custom_button.dart';
 import 'package:smart_tailor/core/common_widgets/text_field.dart';
 import 'package:smart_tailor/core/constants/app_colors.dart';
+import 'package:smart_tailor/core/constants/app_images.dart';
 import 'package:smart_tailor/core/constants/app_routes_names.dart';
 import 'package:smart_tailor/core/utils/validate_mixin.dart';
 
@@ -35,33 +36,17 @@ class _LogiPageState extends State<LoginPage> with FieldValidation {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).textTheme;
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            color: AppColors.backColor,
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
                 const SizedBox(height: 115),
-                Container(
-                  alignment: Alignment.center,
-                  width: 110,
-                  height: 110,
-                  decoration: const BoxDecoration(
-                    color: AppColors.yellow,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(16.57),
-                    ),
-                  ),
-                  child: Text(
-                    'ST',
-                    style: theme.headlineLarge,
-                  ),
-                ),
+                Image.asset(AppImages.imageTitle),
                 const SizedBox(height: 60),
                 Form(
                   key: _formKey,
