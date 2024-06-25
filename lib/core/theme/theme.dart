@@ -3,7 +3,6 @@ part of '../../main.dart';
 ThemeData _theme() {
   return ThemeData(
     scaffoldBackgroundColor: AppColors.backColor,
-    fontFamily: 'SF Pro Text',
     elevatedButtonTheme: _elevatedButton(),
     textButtonTheme: _textButton(),
     appBarTheme: _appBarThem(),
@@ -24,15 +23,22 @@ ThemeData _theme() {
       labelLarge: TextStyle(
         fontSize: 16,
       ),
+      labelMedium: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+      ),
     ),
     tabBarTheme: const TabBarTheme(
       tabAlignment: TabAlignment.start,
       labelPadding: EdgeInsets.only(right: 50),
       labelColor: Colors.black,
-      labelStyle:
-          TextStyle(fontWeight: FontWeight.w500, fontFamily: 'SF Pro Text'),
+      labelStyle: TextStyle(
+        fontWeight: FontWeight.w500,
+      ),
       unselectedLabelStyle: TextStyle(
-          fontSize: 14, fontWeight: FontWeight.w400, fontFamily: 'SF Pro Text'),
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
       unselectedLabelColor: Colors.grey,
       overlayColor: MaterialStatePropertyAll(Colors.white),
       indicator: UnderlineTabIndicator(
@@ -56,9 +62,6 @@ TextButtonThemeData _textButton() {
       ),
       foregroundColor: MaterialStateProperty.all<Color>(
         Colors.black,
-      ),
-      minimumSize: const MaterialStatePropertyAll(
-        Size(double.maxFinite, 0),
       ),
       padding: const MaterialStatePropertyAll(
         EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -123,7 +126,6 @@ AppBarTheme _appBarThem() {
     scrolledUnderElevation: 0,
     titleTextStyle: TextStyle(
       fontSize: 20,
-      fontFamily: 'SF Pro Text',
       color: Colors.black,
       fontWeight: FontWeight.w600,
     ),

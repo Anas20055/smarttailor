@@ -21,7 +21,9 @@ class _BottomBarPageState extends State<BottomBarPage> {
     MarketPlacePage(),
     OrderPage(),
     OrganizationPage(),
-    ProfilePage(),
+    ProfilePage(
+      hasSubscribtion: false,
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -33,9 +35,6 @@ class _BottomBarPageState extends State<BottomBarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-      ),
       body: IndexedStack(
         index: _selectedIndex,
         children: _widgetOptions,
