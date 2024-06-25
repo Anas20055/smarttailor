@@ -10,10 +10,15 @@ class RegisterFormFields extends StatelessWidget {
     required GlobalKey<FormState> formKey,
     required Map<FieldType, ValueNotifier<bool>> isFieldEmpty,
     required Map<FieldType, TextEditingController> controllers,
+    this.fontSize,
+    this.fontColor,
+    this.borderColor,
   })  : _formKey = formKey,
         _isFieldEmpty = isFieldEmpty,
         _controllers = controllers;
-
+  final Color? fontColor;
+  final Color? borderColor;
+  final double? fontSize;
   final GlobalKey<FormState> _formKey;
   final Map<FieldType, ValueNotifier<bool>> _isFieldEmpty;
   final Map<FieldType, TextEditingController> _controllers;
@@ -37,12 +42,19 @@ class RegisterFormFields extends StatelessWidget {
                     Text(
                       fieldType.label,
                       style: theme.labelLarge?.copyWith(
-                        fontSize: isEmpty ? null : 14,
-                        color: isEmpty ? null : Colors.black.withOpacity(0.6),
+                        fontWeight: FontWeight.w400,
+                        fontSize: fontSize,
+                        color:
+                            isEmpty ? fontColor : Colors.black.withOpacity(0.6),
                       ),
                     ),
-                    SizedBox(height: isEmpty ? 11.5 : 8),
+                    const SizedBox(height: 8),
                     MyTextField(
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      borderColor: borderColor,
                       errorStyle: fieldType == FieldType.phone ||
                               fieldType == FieldType.email
                           ? null

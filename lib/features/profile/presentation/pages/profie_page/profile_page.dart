@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smart_tailor/core/constants/app_routes_names.dart';
-import 'package:smart_tailor/features/profile/presentation/pages/widgets/profile_buttons.dart';
+import 'package:smart_tailor/features/profile/presentation/pages/profie_page/widgets/profile_buttons.dart';
 import 'package:smart_tailor/features/profile/presentation/widgets/make_subs_button.dart';
 import 'package:smart_tailor/features/profile/presentation/widgets/profile_title.dart';
 
@@ -55,6 +55,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   bool isMakeSubs = false;
   void onMakeSubs() {
+    setState(() {
+      isMakeSubs = !isMakeSubs;
+    });
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -64,9 +67,6 @@ class _ProfilePageState extends State<ProfilePage> {
           actions: [
             CupertinoDialogAction(
               onPressed: () {
-                setState(() {
-                  isMakeSubs = !isMakeSubs;
-                });
                 Navigator.pop(context);
               },
               child: const Text(

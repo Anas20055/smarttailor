@@ -87,7 +87,7 @@ class ProfileTitleState extends State<ProfileTitle> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 4),
+      padding: const EdgeInsets.only(left: 16, right: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

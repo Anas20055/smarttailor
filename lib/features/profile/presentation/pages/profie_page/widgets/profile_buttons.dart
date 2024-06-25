@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_tailor/features/profile/presentation/pages/widgets/profie_botton.dart';
+import 'package:smart_tailor/core/constants/app_routes_names.dart';
+import 'package:smart_tailor/features/profile/presentation/pages/profie_page/widgets/profie_botton.dart';
 
 class ProfileButtons extends StatelessWidget {
   final bool hasSubscription;
@@ -15,7 +16,13 @@ class ProfileButtons extends StatelessWidget {
       child: Column(
         children: [
           ProfileButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                AppRouteNames.personalInfoPage,
+                arguments: hasSubscription,
+              );
+            },
             title: 'Личные данные',
           ),
           const SizedBox(

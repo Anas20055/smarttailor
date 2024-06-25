@@ -6,5 +6,7 @@ abstract class AppSvg {
   static const imageEmpty = 'assets/svg/Frame 1000001306.svg';
   static const notification = 'assets/svg/iconamoon_notification-thin.svg';
   static const arrowForward = 'assets/svg/􀆈.svg';
-  static const shoppingCart2 = '';
+  static const pen = 'assets/svg/circum_edit.svg';
+  static const pen1 = '';
+  static const pen2 = '';
 }

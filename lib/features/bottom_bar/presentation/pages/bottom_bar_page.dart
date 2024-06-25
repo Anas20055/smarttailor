@@ -3,7 +3,7 @@ import 'package:smart_tailor/features/bottom_bar/presentation/widgets/custom_bot
 import 'package:smart_tailor/features/marketplace/presentation/pages/marketplace_page.dart';
 import 'package:smart_tailor/features/order/presentation/pages/order_page.dart';
 import 'package:smart_tailor/features/organization/presentation/organization_page.dart';
-import 'package:smart_tailor/features/profile/presentation/pages/profile_page.dart';
+import 'package:smart_tailor/features/profile/presentation/pages/profie_page/profile_page.dart';
 
 class BottomBarPage extends StatefulWidget {
   const BottomBarPage({

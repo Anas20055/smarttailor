@@ -6,6 +6,6 @@ abstract class AppRouteNames {
   static const homePage = '/';
   static const notificationsPage = '/notifications';
   static const detailScreen = '/detail';
-  static const authorPage = '/author';
+  static const personalInfoPage = '/personalInfo';
   static const manageProfilePage = '/manageProfile';
 }
