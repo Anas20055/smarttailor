@@ -5,7 +5,8 @@ abstract class AppRouteNames {
   static const register = '/welcom/register';
   static const homePage = '/';
   static const notificationsPage = '/notifications';
-  static const detailScreen = '/detail';
   static const personalInfoPage = '/personalInfo';
   static const manageProfilePage = '/manageProfile';
+  static const myAnnouncementPage = '/myAnnouncementPage';
+  static const detailMyAnnounc = '/detailMyAnnounc';
 }

@@ -7,6 +7,8 @@ abstract class AppSvg {
   static const notification = 'assets/svg/iconamoon_notification-thin.svg';
   static const arrowForward = 'assets/svg/􀆈.svg';
   static const pen = 'assets/svg/circum_edit.svg';
-  static const pen1 = '';
-  static const pen2 = '';
+  static const search = 'assets/svg/iconamoon_search-thin.svg';
+  static const call = 'assets/svg/ion_call.svg';
+  static const pen3 = '';
+  static const pen4 = '';
 }

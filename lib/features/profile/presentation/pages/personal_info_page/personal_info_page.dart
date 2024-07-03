@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smart_tailor/core/common_widgets/adaptive_diolog.dart';
 import 'package:smart_tailor/core/constants/app_svg.dart';
 import 'package:smart_tailor/features/auth/domain/entity/register_enum.dart';
 import 'package:smart_tailor/features/auth/presentation/pages/register_page/widgets/register_form_fields.dart';
@@ -31,6 +32,13 @@ class PersonalInfoPage extends StatefulWidget {
 }
 
 class _PersonalInfoPageState extends State<PersonalInfoPage> {
+  final list = [
+    'faafa',
+    'faafa',
+    'faafa',
+    'faafa',
+    'faafa',
+  ];
   final _formKey = GlobalKey<FormState>();
   final Map<FieldType, TextEditingController> _controllers = {
     for (var type in FieldType.values)
@@ -45,20 +53,13 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CupertinoAlertDialog(
-          title: const Text('Сохранено!'),
-          content: const Text('Ваши данные сохранены!'),
-          actions: [
-            CupertinoDialogAction(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Закрыть',
-                style: TextStyle(color: Colors.blue),
-              ),
-            ),
-          ],
+        return AdaptiveAlertDiolog(
+          title: 'Сохранено!',
+          content: 'Ваши данные сохранены!',
+          button1: 'Закрыть',
+          onPressed1: () {
+            Navigator.pop(context);
+          },
         );
       },
     );

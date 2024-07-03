@@ -29,7 +29,9 @@ class ProfileButtons extends StatelessWidget {
             height: 16,
           ),
           ProfileButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, AppRouteNames.myAnnouncementPage);
+            },
             title: 'Мои объявления',
           ),
           const SizedBox(

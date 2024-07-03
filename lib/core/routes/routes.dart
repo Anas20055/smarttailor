@@ -5,6 +5,8 @@ import 'package:smart_tailor/features/auth/presentation/pages/login_page/login_p
 import 'package:smart_tailor/features/auth/presentation/pages/register_page/register_page.dart';
 import 'package:smart_tailor/features/auth/presentation/pages/welocom_page/welcom_page.dart';
 import 'package:smart_tailor/features/bottom_bar/presentation/pages/bottom_bar_page.dart';
+import 'package:smart_tailor/features/profile/presentation/pages/my_announcements_page/my_announcements_page.dart';
+import 'package:smart_tailor/features/profile/presentation/pages/my_announcements_page/pages/detail_announc_page.dart';
 import 'package:smart_tailor/features/profile/presentation/pages/notifications_page/notifications_page.dart';
 import 'package:smart_tailor/features/profile/presentation/pages/personal_info_page/personal_info_page.dart';
 
@@ -23,11 +25,18 @@ abstract class AppRoutes {
         _materialRoute(const NotifcationsPage()),
       AppRouteNames.register => _materialRoute(const RegisterPage()),
       AppRouteNames.login => _materialRoute(const LoginPage()),
+      AppRouteNames.detailMyAnnounc => _materialRoute(
+          DetailAnnouncPage(
+            title: settings.arguments as String?,
+          ),
+        ),
       AppRouteNames.personalInfoPage => _materialRoute(
           PersonalInfoPage(
             hasSubscribtion: settings.arguments as bool,
           ),
         ),
+      AppRouteNames.myAnnouncementPage =>
+        _materialRoute(const MyAnnouncementPage()),
       _ => _materialRoute(const WelcomePage()),
     };
   }

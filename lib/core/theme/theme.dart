@@ -4,7 +4,6 @@ ThemeData _theme() {
   return ThemeData(
     scaffoldBackgroundColor: AppColors.backColor,
     elevatedButtonTheme: _elevatedButton(),
-    textButtonTheme: _textButton(),
     appBarTheme: _appBarThem(),
     colorScheme: const ColorScheme.light(),
     textTheme: const TextTheme(
@@ -26,52 +25,6 @@ ThemeData _theme() {
       labelMedium: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w500,
-      ),
-    ),
-    tabBarTheme: const TabBarTheme(
-      tabAlignment: TabAlignment.start,
-      labelPadding: EdgeInsets.only(right: 50),
-      labelColor: Colors.black,
-      labelStyle: TextStyle(
-        fontWeight: FontWeight.w500,
-      ),
-      unselectedLabelStyle: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-      ),
-      unselectedLabelColor: Colors.grey,
-      overlayColor: MaterialStatePropertyAll(Colors.white),
-      indicator: UnderlineTabIndicator(
-          borderSide: BorderSide(
-            width: 2,
-          ),
-          insets: EdgeInsets.symmetric(horizontal: 27.0, vertical: 15)),
-    ),
-  );
-}
-
-TextButtonThemeData _textButton() {
-  return TextButtonThemeData(
-    style: ButtonStyle(
-      shape: const MaterialStatePropertyAll(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(12),
-          ),
-        ),
-      ),
-      foregroundColor: MaterialStateProperty.all<Color>(
-        Colors.black,
-      ),
-      padding: const MaterialStatePropertyAll(
-        EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      ),
-      overlayColor: const MaterialStatePropertyAll(Colors.grey),
-      textStyle: const MaterialStatePropertyAll(
-        TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-        ),
       ),
     ),
   );

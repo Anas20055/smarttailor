@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:smart_tailor/core/common_widgets/adaptive_diolog.dart';
 import 'package:smart_tailor/core/constants/app_routes_names.dart';
 import 'package:smart_tailor/features/profile/presentation/pages/profie_page/widgets/profile_buttons.dart';
 import 'package:smart_tailor/features/profile/presentation/widgets/make_subs_button.dart';
@@ -22,32 +23,19 @@ class _ProfilePageState extends State<ProfilePage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CupertinoAlertDialog(
-          title: const Text('Вы действительно хотите выйти?'),
-          actions: [
-            CupertinoDialogAction(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Закрыть',
-                style: TextStyle(color: Colors.blue),
-              ),
-            ),
-            CupertinoDialogAction(
-              isDefaultAction: true,
-              onPressed: () {
-                Navigator.pushReplacementNamed(
-                  context,
-                  AppRouteNames.welcome,
-                );
-              },
-              child: const Text(
-                'Да',
-                style: TextStyle(color: Colors.blue),
-              ),
-            ),
-          ],
+        return AdaptiveAlertDiolog(
+          title: 'Вы действительно хотите выйти?',
+          button1: 'Закрыть',
+          onPressed1: () {
+            Navigator.pop(context);
+          },
+          button2: 'Да',
+          onPressed2: () {
+            Navigator.pushReplacementNamed(
+              context,
+              AppRouteNames.welcome,
+            );
+          },
         );
       },
     );
@@ -61,21 +49,13 @@ class _ProfilePageState extends State<ProfilePage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CupertinoAlertDialog(
-          title: const Text('Ура! 🎉'),
-          content: const Text('Подписка уже в пути!'),
-          actions: [
-            CupertinoDialogAction(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Понятно',
-                style: TextStyle(color: Colors.blue),
-              ),
-            ),
-          ],
-        );
+        return AdaptiveAlertDiolog(
+            title: 'Ура! 🎉',
+            content: 'Подписка уже в пути!',
+            button1: 'Понятно',
+            onPressed1: () {
+              Navigator.pop(context);
+            });
       },
     );
   }
