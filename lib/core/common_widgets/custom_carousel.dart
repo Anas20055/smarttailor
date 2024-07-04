@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_tailor/core/constants/app_colors.dart';
 
 class CustomCarousel extends StatelessWidget {
+  final String? date;
   final CarouselController controller;
   final List<String> imgList;
   final int currentIndex;
@@ -14,43 +16,60 @@ class CustomCarousel extends StatelessWidget {
     required this.imgList,
     required this.currentIndex,
     this.onPageChanged,
+    this.date,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CarouselSlider(
-          carouselController: controller,
-          options: CarouselOptions(
-            animateToClosest: false,
-            enableInfiniteScroll: false,
-            height: 200.0,
-            viewportFraction: 1.0,
-            onPageChanged: onPageChanged,
-          ),
-          items: imgList
-              .map(
-                (item) => Container(
-                  height: 206,
-                  decoration: const BoxDecoration(
-                    color: AppColors.backColor,
-                  ),
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
-                    clipBehavior: Clip.antiAlias,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
+        Stack(
+          children: [
+            CarouselSlider(
+              carouselController: controller,
+              options: CarouselOptions(
+                animateToClosest: false,
+                enableInfiniteScroll: false,
+                height: 200.0,
+                viewportFraction: 1.0,
+                onPageChanged: onPageChanged,
+              ),
+              items: imgList
+                  .map(
+                    (item) => Container(
+                      height: 206,
+                      decoration: const BoxDecoration(
+                        color: AppColors.backColor,
+                      ),
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 16),
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                        ),
+                        child: CachedNetworkImage(
+                          imageUrl: item,
+                          fit: BoxFit.cover,
+                          width: 1000,
+                        ),
+                      ),
                     ),
-                    child: CachedNetworkImage(
-                      imageUrl: item,
-                      fit: BoxFit.cover,
-                      width: 1000,
+                  )
+                  .toList(),
+            ),
+            if (date != null)
+              Positioned(
+                right: 28,
+                bottom: 12,
+                child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: AppColors.yellow,
+                      borderRadius: BorderRadius.circular(6),
                     ),
-                  ),
-                ),
-              )
-              .toList(),
+                    child: Text('Срок: $date')),
+              ),
+          ],
         ),
         Padding(
           padding: const EdgeInsets.only(left: 16),

@@ -6,7 +6,8 @@ abstract class AppRouteNames {
   static const homePage = '/';
   static const notificationsPage = '/notifications';
   static const personalInfoPage = '/personalInfo';
-  static const manageProfilePage = '/manageProfile';
   static const myAnnouncementPage = '/myAnnouncementPage';
-  static const detailMyAnnounc = '/detailMyAnnounc';
+  static const detailMyAnnounc = '/myAnnouncementPage/detailMyAnnounc';
+  static const myPurchasesPage = '/myPurchasesPage';
+  static const detailPurchasePage = '/myPurchasesPage/detailPurchasePage';
 }

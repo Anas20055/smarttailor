@@ -38,18 +38,24 @@ class ProfileButtons extends StatelessWidget {
             height: 16,
           ),
           ProfileButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, AppRouteNames.myPurchasesPage);
+            },
             title: 'Мои покупки',
           ),
           const SizedBox(
             height: 16,
           ),
-          hasSubscription
-              ? ProfileButton(
-                  onPressed: () {},
-                  title: 'История заказов',
-                )
-              : const SizedBox(),
+          if (hasSubscription)
+            ProfileButton(
+              onPressed: () {},
+              title: 'История заказов',
+            ),
+          if (hasSubscription)
+            ProfileButton(
+              onPressed: () {},
+              title: 'Организация',
+            ),
         ],
       ),
     );
