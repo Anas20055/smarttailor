@@ -12,7 +12,17 @@ class _NotifcationsPageState extends State<NotifcationsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NotifcationsPage'),
+        title: const Text('Уведомления'),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white,
+        ),
+        margin: const EdgeInsets.fromLTRB(16, 35, 16, 16),
+        child: Column(
+          children: [Divider(), Text('Отметить все прочитанными')],
+        ),
       ),
     );
   }

@@ -22,7 +22,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
     OrderPage(),
     OrganizationPage(),
     ProfilePage(
-      hasSubscribtion: false,
+      hasSubscribtion: true,
     ),
   ];
 

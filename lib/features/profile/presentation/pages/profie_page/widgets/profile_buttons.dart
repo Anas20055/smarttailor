@@ -48,9 +48,14 @@ class ProfileButtons extends StatelessWidget {
           ),
           if (hasSubscription)
             ProfileButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, AppRouteNames.historyPage);
+              },
               title: 'История заказов',
             ),
+          const SizedBox(
+            height: 16,
+          ),
           if (hasSubscription)
             ProfileButton(
               onPressed: () {},

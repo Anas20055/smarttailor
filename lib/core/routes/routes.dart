@@ -5,6 +5,7 @@ import 'package:smart_tailor/features/auth/presentation/pages/login_page/login_p
 import 'package:smart_tailor/features/auth/presentation/pages/register_page/register_page.dart';
 import 'package:smart_tailor/features/auth/presentation/pages/welocom_page/welcom_page.dart';
 import 'package:smart_tailor/features/bottom_bar/presentation/pages/bottom_bar_page.dart';
+import 'package:smart_tailor/features/profile/presentation/pages/history_page/history_page.dart';
 import 'package:smart_tailor/features/profile/presentation/pages/my_announcements_page/my_announcements_page.dart';
 import 'package:smart_tailor/features/profile/presentation/pages/my_announcements_page/pages/detail_announc_page.dart';
 import 'package:smart_tailor/features/profile/presentation/pages/my_purchases_page/my_purchases_page.dart';
@@ -42,6 +43,7 @@ abstract class AppRoutes {
       AppRouteNames.myPurchasesPage => _materialRoute(const MyPurchasesPage()),
       AppRouteNames.detailPurchasePage =>
         _materialRoute(const DetailPurchasePage()),
+      AppRouteNames.historyPage => _materialRoute(const HistoryPage()),
       _ => _materialRoute(const WelcomePage()),
     };
   }
