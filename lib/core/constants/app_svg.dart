@@ -9,6 +9,10 @@ abstract class AppSvg {
   static const pen = 'assets/svg/circum_edit.svg';
   static const search = 'assets/svg/iconamoon_search-thin.svg';
   static const call = 'assets/svg/ion_call.svg';
+  static const userIcon = 'assets/svg/Frame 1000001283.svg';
+  static const formIcon = 'assets/svg/Frame 1000001283 (1).svg';
+  static const cartIcon = 'assets/svg/Frame 1000001283 (2).svg';
+  static const eye = 'assets/svg/Content.svg';
   static const pen3 = '';
   static const pen4 = '';
 }
