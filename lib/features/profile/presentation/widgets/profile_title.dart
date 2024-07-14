@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:smart_tailor/core/common_widgets/adaptive_bottom_sheet.dart';
 
 import 'package:smart_tailor/core/constants/app_routes_names.dart';
 import 'package:smart_tailor/core/constants/app_svg.dart';
@@ -22,51 +23,6 @@ class ProfileTitle extends StatefulWidget {
 
 class ProfileTitleState extends State<ProfileTitle> {
   File? _image;
-
-  void _showImageSourceActionSheet(BuildContext context) {
-    showCupertinoModalPopup(
-      context: context,
-      builder: (BuildContext context) => CupertinoActionSheet(
-        actions: <CupertinoActionSheetAction>[
-          CupertinoActionSheetAction(
-            child: const Text(
-              'Сделать фотографию',
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
-            onPressed: () {
-              _getImage(ImageSource.camera);
-              Navigator.pop(context);
-            },
-          ),
-          CupertinoActionSheetAction(
-            child: const Text(
-              'Выбрать фотографию',
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
-            onPressed: () {
-              _getImage(ImageSource.gallery);
-              Navigator.pop(context);
-            },
-          ),
-        ],
-        cancelButton: CupertinoActionSheetAction(
-          child: const Text(
-            'Закрыть',
-            style: TextStyle(
-              color: Colors.black,
-            ),
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-    );
-  }
 
   Future<void> _getImage(ImageSource source) async {
     final picker = ImagePicker();
@@ -93,7 +49,19 @@ class ProfileTitleState extends State<ProfileTitle> {
         children: [
           GestureDetector(
             onTap: () {
-              _showImageSourceActionSheet(context);
+              AdaptiveBottomSheet.showImageSourceActionSheet(
+                context: context,
+                button1: 'Сделать фотографию',
+                button2: 'Выбрать фотографию',
+                onPressed1: () {
+                  _getImage(ImageSource.camera);
+                  Navigator.pop(context);
+                },
+                onPressed2: () {
+                  _getImage(ImageSource.gallery);
+                  Navigator.pop(context);
+                },
+              );
             },
             child: Container(
               clipBehavior: Clip.antiAlias,

@@ -11,7 +11,7 @@ import 'package:smart_tailor/features/profile/presentation/widgets/profile_title
 extension StatusExtension on FieldType {
   String? fields() {
     return switch (this) {
-      FieldType.username => 'Soodokeev',
+      FieldType.surname => 'Soodokeev',
       FieldType.name => 'anas',
       FieldType.midname => 'fsfsf',
       FieldType.email => 'anas@gmail.com',

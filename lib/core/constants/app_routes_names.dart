@@ -11,4 +11,5 @@ abstract class AppRouteNames {
   static const myPurchasesPage = '/myPurchasesPage';
   static const detailPurchasePage = '/myPurchasesPage/detailPurchasePage';
   static const historyPage = '/historyPage';
+  static const createOrganizationPage = '/createOrganizationPage';
 }

@@ -1,15 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:smart_tailor/core/constants/app_routes_names.dart';
 import 'package:smart_tailor/core/utils/validate_mixin.dart';
+import 'package:smart_tailor/features/auth/domain/entity/confirm_arguments.dart';
+import 'package:smart_tailor/features/auth/presentation/pages/confirm_page/cubit/confirm_otp_cubit.dart';
 import 'package:smart_tailor/features/auth/presentation/pages/confirm_page/widgets/confirm_buttons.dart';
 import 'package:smart_tailor/features/auth/presentation/pages/confirm_page/widgets/otp_form.dart';
 
 class ConfirmPage extends StatefulWidget {
-  final String? title;
-  const ConfirmPage({super.key, this.title});
+  final ConfirmArguments confirmArguments;
+  const ConfirmPage({
+    super.key,
+    required this.confirmArguments,
+  });
 
   @override
   State<ConfirmPage> createState() => _ConfirmPageState();
@@ -44,22 +52,11 @@ class _ConfirmPageState extends State<ConfirmPage> with FieldValidation {
     if (_formKey.currentState!.validate()) {
       String otp = _controllers.map((controller) => controller.text).join();
       // Perform OTP verification logic here
-      bool isOtpCorrect = _checkOtp(otp);
+      context
+          .read<ConfirmOtpCubit>()
+          .confirmOtp(widget.confirmArguments.email, int.parse(otp));
       // Replace with actual OTP check
-      if (isOtpCorrect) {
-        Navigator.pushReplacementNamed(context, AppRouteNames.homePage);
-      } else {
-        setState(() {
-          _otpError = true;
-          _infoMessage = 'Код введен неверно, попробуйте еще раз';
-        });
-      }
     }
-  }
-
-  bool _checkOtp(String otp) {
-    // Add your OTP verification logic here
-    return otp == "1234"; // Example condition, replace with actual check
   }
 
   void startTimer() {
@@ -86,10 +83,10 @@ class _ConfirmPageState extends State<ConfirmPage> with FieldValidation {
       }
     });
     startTimer();
-    // Perform resend code logic here
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Resending code...')),
-    );
+
+    context
+        .read<ConfirmOtpCubit>()
+        .resendConfirmOtp(widget.confirmArguments.email);
   }
 
   @override
@@ -99,55 +96,70 @@ class _ConfirmPageState extends State<ConfirmPage> with FieldValidation {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          widget.title ?? 'Регистрация',
+          widget.confirmArguments.title ?? 'Регистрация',
         ),
       ),
-      body: SingleChildScrollView(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            SizedBox(
-              height: MediaQuery.sizeOf(context).height - 115,
-              child: Column(
-                children: [
-                  const SizedBox(height: 72),
-                  SizedBox(
-                    width: 225,
-                    child: Text(
-                      _infoMessage,
+      body: BlocListener<ConfirmOtpCubit, ConfirmOtpState>(
+        listener: _authListener,
+        child: SingleChildScrollView(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height - 115,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 72),
+                    SizedBox(
+                      width: 225,
+                      child: Text(
+                        _infoMessage,
+                        style: theme.labelLarge,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(height: 28),
+                    OtpForm(
+                      formKey: _formKey,
+                      controllers: _controllers,
+                      otpError: _otpError,
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Отправить код повторно через',
                       style: theme.labelLarge,
-                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  const SizedBox(height: 28),
-                  OtpForm(
-                    formKey: _formKey,
-                    controllers: _controllers,
-                    otpError: _otpError,
-                  ),
-                  const SizedBox(height: 24),
-                  Text(
-                    'Отправить код повторно через',
-                    style: theme.labelLarge,
-                  ),
-                  const SizedBox(height: 14),
-                  Text(
-                    '00:${_start < 10 ? "0" : ""}$_start',
-                    style: theme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w400,
+                    const SizedBox(height: 14),
+                    Text(
+                      '00:${_start < 10 ? "0" : ""}$_start',
+                      style: theme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 200),
-                ],
+                    const SizedBox(height: 200),
+                  ],
+                ),
               ),
-            ),
-            ConfirmButtons(
-              onPressed1: _verifyOTP,
-              onPressed2: _start == 0 ? _resendCode : null,
-            ),
-          ],
+              ConfirmButtons(
+                onPressed1: _verifyOTP,
+                onPressed2: _start == 0 ? _resendCode : null,
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  void _authListener(context, state) {
+    if (state is ConfirmOtpError) {
+      setState(() {
+        _otpError = true;
+        _infoMessage = state.error ?? '';
+      });
+    } else if (state is ConfirmOtpSuccess) {
+      Navigator.pushReplacementNamed(context, AppRouteNames.homePage,
+          arguments: 3);
+    }
   }
 }

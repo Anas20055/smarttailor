@@ -95,7 +95,11 @@ class MyTextField extends StatelessWidget {
               bottom: 10,
             ),
         hintText: hintText,
-        hintStyle: null,
+        hintStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: AppColors.darkGrey,
+        ),
         suffixIcon: suffixIcon,
         counterText: '',
       ),

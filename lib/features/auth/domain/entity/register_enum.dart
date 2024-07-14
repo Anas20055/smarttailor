@@ -1,7 +1,7 @@
 import 'package:smart_tailor/core/utils/validate_mixin.dart';
 
 enum FieldType with FieldValidation {
-  username('Фамилия*'),
+  surname('Фамилия*'),
   name('Имя*'),
   midname('Отчество*'),
   email('Почта*'),
@@ -13,7 +13,7 @@ enum FieldType with FieldValidation {
 
   String? validate(String? value) {
     return switch (this) {
-      FieldType.username => validateIsEmpty(value),
+      FieldType.surname => validateIsEmpty(value),
       FieldType.name => validateIsEmpty(value),
       FieldType.midname => validateIsEmpty(value),
       FieldType.email => validateEmail(value),

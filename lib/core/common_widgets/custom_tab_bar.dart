@@ -5,9 +5,12 @@ class CustomTabBar extends StatelessWidget {
     super.key,
     required TabController tabController,
     required List<Tab> tabs,
+    this.tabAlignment,
+    this.isScrollable,
   })  : _tabController = tabController,
         _tabs = tabs;
-
+  final TabAlignment? tabAlignment;
+  final bool? isScrollable;
   final TabController _tabController;
   final List<Tab> _tabs;
 
@@ -21,6 +24,8 @@ class CustomTabBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(9.0),
       ),
       child: TabBar(
+        tabAlignment: tabAlignment,
+        isScrollable: isScrollable ?? false,
         unselectedLabelStyle: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w400,

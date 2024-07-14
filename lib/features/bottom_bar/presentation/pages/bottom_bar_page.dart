@@ -6,8 +6,10 @@ import 'package:smart_tailor/features/organization/presentation/organization_pag
 import 'package:smart_tailor/features/profile/presentation/pages/profie_page/profile_page.dart';
 
 class BottomBarPage extends StatefulWidget {
+  final int? index;
   const BottomBarPage({
     super.key,
+    this.index,
   });
 
   @override
@@ -15,7 +17,17 @@ class BottomBarPage extends StatefulWidget {
 }
 
 class _BottomBarPageState extends State<BottomBarPage> {
-  int _selectedIndex = 3;
+  @override
+  void initState() {
+    if (widget.index != null) {
+      setState(() {
+        _selectedIndex = widget.index!;
+      });
+    }
+    super.initState();
+  }
+
+  int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = [
     MarketPlacePage(),

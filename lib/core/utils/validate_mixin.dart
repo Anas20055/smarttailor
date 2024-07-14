@@ -25,4 +25,13 @@ mixin FieldValidation {
     }
     return null;
   }
+
+  String? validateInput(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Поле не может быть пустой';
+    } else if (value.length < 5 && value.length > 50) {
+      return 'максимум 50 символов, минимум 5';
+    }
+    return null;
+  }
 }
